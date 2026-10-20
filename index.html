@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1c1f1a">
+    <title>Flashcards</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="home">
+    <h1>Flashcards</h1>
+
+    <section class="settings">
+        <label class="toggle">
+            <input type="checkbox" id="shuffle">
+            <span>Shuffle</span>
+        </label>
+        <fieldset class="segmented">
+            <legend class="visually-hidden">Direction</legend>
+            <label><input type="radio" name="direction" value="standard"><span>Standard</span></label>
+            <label><input type="radio" name="direction" value="reverse"><span>Reverse</span></label>
+            <label><input type="radio" name="direction" value="mixed"><span>Mixed</span></label>
+        </fieldset>
+    </section>
+
+    <ul id="lists"></ul>
+    <p id="empty" class="muted">No lists yet.</p>
+
+    <div class="actions">
+        <button id="import-button" class="secondary">Import CSV</button>
+        <input type="file" id="import" accept=".csv,text/csv" hidden>
+        <button id="practice" disabled>Practice</button>
+    </div>
+
+    <section class="format">
+        <h2>CSV format</h2>
+        <p class="muted">Two columns, question and answer, with no header row. Wrap a field in quotes if it contains a comma.</p>
+        <pre><code>cat,kaķis
+dog,suns
+"hello, world","sveika, pasaule"</code></pre>
+    </section>
+</main>
+
+<main id="session" hidden>
+    <header class="session-header">
+        <button id="back" class="secondary">Back</button>
+        <h1 id="session-title" tabindex="-1">Practice</h1>
+        <span id="progress"></span>
+    </header>
+    <button id="card" class="card" aria-describedby="hint"></button>
+    <p id="hint" class="muted">Click the card to flip it. Use ← and → to move between cards and Esc to go back.</p>
+    <div class="actions">
+        <button id="prev" class="secondary">Previous</button>
+        <button id="next">Next</button>
+    </div>
+</main>
+
+<p id="status" class="visually-hidden" role="status"></p>
+
+<script src="app.js"></script>
+</body>
+</html>
